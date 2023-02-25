@@ -1,0 +1,29 @@
+.free-cources{
+  background-color: #FFA3FD;
+  display:inline-block;
+  width: 100%;
+}
+.paid-cources{
+  background-color: #9DC08B;
+  display :inline-block;
+  width:100%;
+}
+.paid-content{
+  padding:50px;
+}
+.free-content{
+  padding:50px;
+}
+
+h1{
+  text-align: center;
+  background-color: black;
+  color: gold;
+}
+img{
+  margin: 20px;
+  height: 200px;
+  width: 300px;
+  border: solid 10px;
+  border-color: black;
+}
