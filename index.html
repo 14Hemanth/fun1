@@ -23,7 +23,7 @@
         main {
             flex: 1;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             padding: 20px;
         }
@@ -56,6 +56,70 @@
         #show-mashup-button:hover {
             background-color: #004080; /* Darker blue on hover */
         }
+
+        /* Slideshow styles */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: 20px 0;
+        }
+        .mySlides {
+            display: none;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+        .fade {
+            animation: fade 2s ease-in-out infinite;
+        }
+        @keyframes fade {
+            0% { opacity: 0 }
+            25% { opacity: 1 }
+            50% { opacity: 0 }
+            75% { opacity: 1 }
+            100% { opacity: 0 }
+        }
+
+        /* Marquee styles */
+        .marquee {
+            background-color: #ffcc00; /* Bright yellow for attention */
+            color: #003366;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        .marquee-text {
+            display: inline-block;
+            animation: scroll-left 10s linear infinite;
+        }
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Offers Section */
+        .offers-section {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .offer {
+            width: 30%;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .offer img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -64,7 +128,50 @@
     </header>
 
     <main>
+        <!-- Marquee for offers or announcements -->
+        <div class="marquee">
+            <div class="marquee-text">
+                🎉 New Year Offer: Get 10% cashback on your first transaction! 🏦 | Limited time only! 🎁
+            </div>
+        </div>
+
+        <!-- Slideshow -->
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="https://via.placeholder.com/1000x300/003366/ffffff?text=Banking+Promotion+1" alt="Promo 1">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="https://via.placeholder.com/1000x300/003366/ffffff?text=Banking+Promotion+2" alt="Promo 2">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="https://via.placeholder.com/1000x300/003366/ffffff?text=Banking+Promotion+3" alt="Promo 3">
+            </div>
+        </div>
+
+        <!-- Offers Section -->
+        <div class="offers-section">
+            <div class="offer">
+                <img src="https://via.placeholder.com/300x200/003366/ffffff?text=Offer+1" alt="Offer 1">
+                <h3>Exclusive Credit Card Offer</h3>
+                <p>Get 5% cashback on all purchases for the first 6 months!</p>
+            </div>
+            <div class="offer">
+                <img src="https://via.placeholder.com/300x200/003366/ffffff?text=Offer+2" alt="Offer 2">
+                <h3>Free Checking Account</h3>
+                <p>Sign up today and enjoy a free checking account for 1 year.</p>
+            </div>
+            <div class="offer">
+                <img src="https://via.placeholder.com/300x200/003366/ffffff?text=Offer+3" alt="Offer 3">
+                <h3>Personal Loan Discount</h3>
+                <p>Get a 2% discount on interest rates for new personal loans.</p>
+            </div>
+        </div>
+
+        <!-- Create New Dispute Case Button -->
         <button id="show-mashup-button">Create New Dispute Case</button>
+
         <div id="pega-mashup-container">
             <!-- ********************** Begin Pega content ********************** -->
             <script src='https://hgie1ikx.pegaacademy.net/prweb/app/card-dispute_6419/?pzuiactionzzz=CXtpbn00dWQ4RnhIT1EyTnMyOEZWQ2lGRit1QmJFTEJHYmtXdlNpeUh4cGE4VEZYTFhYTWZSREFFYnhlVnVpMEhpb1dz*'></script>
@@ -91,6 +198,21 @@
     </footer>
 
     <script>
+        // Slideshow functionality
+        let slideIndex = 0;
+        function showSlides() {
+            let slides = document.getElementsByClassName("mySlides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+        showSlides();
+
+        // Toggle Pega Mashup container visibility
         document.getElementById('show-mashup-button').addEventListener('click', function() {
             document.getElementById('pega-mashup-container').style.display = 'block';
         });
